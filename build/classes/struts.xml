@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts  
+Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">  
+<!-- all the url (/*) when hit the project, 
+it 1st look into the web.xml and 
+then filter inside web.xml tells 
+to look into the struts.xm -->
+<struts>
+	<!-- <package name="default" extends="struts-default">  This has default namespace-->
+	<!-- if we don't specify the it is default namespace. so url is http://localhost:8080/Struts2Demo/getTutorial.action
+	namespace is useful if you want to organize your resources -->
+	<!-- Add namespace to the url , so the access point is now http://localhost:8080/Struts2Demo/tutorials/<youraction name>  -->
+	
+	<!--  you can split paclages into different .xml (login.xml)file and can import it into
+	the main struct.xml -->
+	<!-- you can inclue other xml file using<iclue> tag. this is just organize packages if you have so many packes
+	<inclue file="login.xml" /> -->
+	<package name="default" namespace="/tutorials" extends="struts-default">
+		<action name="getTutorial" class="ca.kirti.actions.TutorialAction">
+		<result name="test">/test.jsp</result>
+		<result name="faliure">/error.jsp</result>
+		<result name="success">/success.jsp</result>
+	</action>
+	</package>
+	<!-- Package must have a unique name. we are not specifying any namespace her. so its default namespace -->
+	<package name="login" namespace="/" extends="struts-default">
+		<action name="login" class="ca.kirti.actions.LoginAction">
+		<result name="faliure">/login.jsp</result>
+		<result name="success">/searchForm.jsp</result>
+	</action>
+	</package>
+
+</struts>
